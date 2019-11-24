@@ -1,4 +1,5 @@
 # Pets API
+[![CircleCI](https://circleci.com/gh/Carla-de-Beer/pets-api.svg?style=svg)](https://circleci.com/gh/Carla-de-Beer/pets-api)
 
 This is a Spring Boot API project that displays data related to a list of pets. This data is manipulated by means of a set of standard and custom CRUD calls via a MongoDB database. 
 
