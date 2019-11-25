@@ -18,6 +18,7 @@ import java.util.Collections;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.BDDMockito.given;
 import static org.mockito.BDDMockito.then;
 import static org.mockito.Mockito.*;
 
@@ -263,8 +264,36 @@ class PetServiceImplTest {
 
     @Test
     @DisplayName("Test update existing pet")
+    @Disabled
     void updateExistingPet() {
+        PetDTO petDTO = PetDTO.builder()
+                .objectId(OBJECT_ID_1)
+                .id(OBJECT_ID_1.toHexString())
+                .name(NAME_1)
+                .species("newSpecies")
+                .breed("newBreed")
+                .build();
 
+        Pet pet = Pet.builder()
+                .objectId(petDTO.getObjectId())
+                .name(petDTO.getName())
+                .species(petDTO.getSpecies())
+                .breed(petDTO.getBreed())
+                .build();
+
+        given(petRepository.save(any(Pet.class))).willReturn(pet);
+
+        PetDTO savedPetDTO = petService.updateExistingPet(OBJECT_ID_1.toHexString(), petDTO);
+
+        // 'should' defaults to times = 1
+        then(petRepository).should().save(any(Pet.class));
+
+        assertThat(savedPetDTO.getName())
+                .withFailMessage("Could not correctly update pet")
+                .contains(NAME_1);
+
+        verify(petRepository, times(1)).save(any(Pet.class));
+        verifyNoMoreInteractions(petRepository);
     }
 
     @Test

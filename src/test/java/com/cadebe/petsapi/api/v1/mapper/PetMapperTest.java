@@ -64,6 +64,16 @@ class PetMapperTest {
     }
 
     @Test
+    @DisplayName("Test petToPetDTOMapper (null)")
+    void petToPetDTOMapperNull() {
+        PetDTO mappedPetDTO = petMapper.petToPetDTOMapper(null);
+
+        assertThat(mappedPetDTO)
+                .withFailMessage("Could not correctly map pet to petDTO (null)")
+                .isNull();
+    }
+
+    @Test
     @DisplayName("Test petDTOToPetMapper")
     void petDTOToPetMapper() {
         Pet mappedPet = petMapper.petDTOToPetMapper(petDTO);
@@ -83,5 +93,15 @@ class PetMapperTest {
         assertThat(mappedPet.getBreed())
                 .withFailMessage("Could not correctly map petDTO to pet by breed")
                 .isEqualTo(BREED);
+    }
+
+    @Test
+    @DisplayName("Test petDTOToPetMapper (null)")
+    void petDTOToPetMapperNull() {
+        Pet mappedPet = petMapper.petDTOToPetMapper(null);
+
+        assertThat(mappedPet)
+                .withFailMessage("Could not correctly map petDTO to pet (null)")
+                .isNull();
     }
 }

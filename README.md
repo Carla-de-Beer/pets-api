@@ -42,7 +42,7 @@ db.pet.insertMany([
 * Add a database username and password to the `src/main/resources/application.properties` file.
 * Start the project server by running the command `mvn spring-boot:run`.
 
-The API can be called with any of the following cURL CRUD-based requests:
+* The API can be called with any of the following cURL CRUD-based requests (in either JSON or XML formats):
 
 * GET/READ:
   * ```curl -i http://localhost:8080/api/v1/pets/```
@@ -50,7 +50,7 @@ The API can be called with any of the following cURL CRUD-based requests:
   * ```curl -i http://localhost:8080/api/v1/name/<String>```
   * ```curl -i http://localhost:8080/api/v1/species/<String>```
   * ```curl -i http://localhost:8080/api/v1/breed/<String>```
-
+  
 
 * UPDATE/EDIT:
   * ```curl -i -H "Content-Type: application/json" -X PUT -d '{  "name" : "Spot","species" : "dog","breed" : "terrier"}' http://localhost:8080/api/v1/pets/<ObjectId>```
