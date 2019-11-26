@@ -14,6 +14,15 @@
     <name>pets-api</name>
     <description>Spring Boot MongoDB Project</description>
 
+    <developers>
+        <developer>
+            <id>cadebe</id>
+            <name>Carla de Beer</name>
+        </developer>
+    </developers>
+
+    <inceptionYear>2019</inceptionYear>
+
     <properties>
         <java.version>11</java.version>
     </properties>

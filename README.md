@@ -10,8 +10,8 @@ Continuous integration is achieved through [CircleCi 2.0](https://circleci.com/d
 ## Requirements
 
 * Java 11
-* Spring Boot 2.2.1
-* Maven 3.6.1
+* Spring Boot 2.2.1.RELEASE
+* Maven 3.6.2
 * MongoDB 4.2.1
 * JUnit 5
 
