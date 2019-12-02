@@ -1,10 +1,9 @@
-package com.cadebe.petsapi.integrationTest;
+package com.cadebe.petsapi.service;
 
 import com.cadebe.petsapi.api.v1.model.PetDTO;
 import com.cadebe.petsapi.bootstrap.Bootstrap;
 import com.cadebe.petsapi.exception.ResourceNotFoundException;
 import com.cadebe.petsapi.repository.PetRepository;
-import com.cadebe.petsapi.service.PetService;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
