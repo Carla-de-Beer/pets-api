@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Tag("mapper")
-@DisplayName("Test PetMapper")
+@DisplayName("PetMapper")
 class PetMapperTest {
 
     private final PetMapper petMapper = new PetMapper();

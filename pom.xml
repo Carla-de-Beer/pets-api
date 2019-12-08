@@ -25,6 +25,7 @@
 
     <properties>
         <java.version>11</java.version>
+        <woodstox.core.asl.version>4.4.1</woodstox.core.asl.version>
     </properties>
 
     <dependencies>
@@ -58,7 +59,7 @@
         <dependency>
             <groupId>org.codehaus.woodstox</groupId>
             <artifactId>woodstox-core-asl</artifactId>
-            <version>4.4.1</version>
+            <version>${woodstox.core.asl.version}</version>
         </dependency>
 
         <dependency>

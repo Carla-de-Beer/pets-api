@@ -33,7 +33,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 
 @Tag("controller")
-@DisplayName("Test IndexController")
+@DisplayName("IndexController")
 @ExtendWith(MockitoExtension.class)
 class PetControllerTest {
 

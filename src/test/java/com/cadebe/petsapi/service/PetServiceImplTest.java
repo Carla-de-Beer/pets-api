@@ -23,7 +23,7 @@ import static org.mockito.BDDMockito.then;
 import static org.mockito.Mockito.*;
 
 @Tag("service")
-@DisplayName("Test PetServiceImpl")
+@DisplayName("PetServiceImpl")
 @MockitoSettings(strictness = Strictness.LENIENT)
 @ExtendWith(MockitoExtension.class)
 class PetServiceImplTest {

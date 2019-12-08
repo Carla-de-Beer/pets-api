@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @Tag("integration")
-@DisplayName("Test PetService (IT)")
+@DisplayName("PetService (IT)")
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 class PetServiceIT {
