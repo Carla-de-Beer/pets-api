@@ -1,6 +1,5 @@
 package com.cadebe.petsapi.service;
 
-import com.cadebe.petsapi.api.v1.mapper.PetMapper;
 import com.cadebe.petsapi.api.v1.model.PetDTO;
 import com.cadebe.petsapi.domain.Pet;
 import com.cadebe.petsapi.exception.ResourceNotFoundException;
@@ -50,7 +49,7 @@ class PetServiceImplTest {
 
     @BeforeEach
     void setUp() {
-        petService = new PetServiceImpl(petRepository, new PetMapper());
+        petService = new PetServiceImpl(petRepository);
 
         pet1 = Pet.builder()
                 .objectId(OBJECT_ID_1)

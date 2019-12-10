@@ -14,8 +14,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DisplayName("PetMapper")
 class PetMapperTest {
 
-    private final PetMapper petMapper = new PetMapper();
-
     private final ObjectId ID = new ObjectId("507f1f77bcf86cd799439011");
     private final String BREED = "Terrier";
     private final String SPECIES = "Doggie";
@@ -44,7 +42,7 @@ class PetMapperTest {
     @Test
     @DisplayName("Test petToPetDTOMapper")
     void petToPetDTOMapper() {
-        PetDTO mappedPetDTO = petMapper.petToPetDTOMapper(pet);
+        PetDTO mappedPetDTO = PetMapper.INSTANCE.petToPetDTOMapper(pet);
 
         assertThat(mappedPetDTO.getObjectId())
                 .withFailMessage("Could not correctly map petDTO to pet by ObjectId")
@@ -66,7 +64,7 @@ class PetMapperTest {
     @Test
     @DisplayName("Test petToPetDTOMapper (null)")
     void petToPetDTOMapperNull() {
-        PetDTO mappedPetDTO = petMapper.petToPetDTOMapper(null);
+        PetDTO mappedPetDTO = PetMapper.INSTANCE.petToPetDTOMapper(null);
 
         assertThat(mappedPetDTO)
                 .withFailMessage("Could not correctly map pet to petDTO (null)")
@@ -76,7 +74,7 @@ class PetMapperTest {
     @Test
     @DisplayName("Test petDTOToPetMapper")
     void petDTOToPetMapper() {
-        Pet mappedPet = petMapper.petDTOToPetMapper(petDTO);
+        Pet mappedPet = PetMapper.INSTANCE.petDTOToPetMapper(petDTO);
 
         assertThat(mappedPet.getObjectId())
                 .withFailMessage("Could not correctly map petDTO to pet by ObjectId")
@@ -98,7 +96,7 @@ class PetMapperTest {
     @Test
     @DisplayName("Test petDTOToPetMapper (null)")
     void petDTOToPetMapperNull() {
-        Pet mappedPet = petMapper.petDTOToPetMapper(null);
+        Pet mappedPet = PetMapper.INSTANCE.petDTOToPetMapper(null);
 
         assertThat(mappedPet)
                 .withFailMessage("Could not correctly map petDTO to pet (null)")

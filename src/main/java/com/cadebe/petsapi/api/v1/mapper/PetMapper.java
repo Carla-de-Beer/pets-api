@@ -2,38 +2,17 @@ package com.cadebe.petsapi.api.v1.mapper;
 
 import com.cadebe.petsapi.api.v1.model.PetDTO;
 import com.cadebe.petsapi.domain.Pet;
-import org.bson.types.ObjectId;
-import org.springframework.stereotype.Component;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.factory.Mappers;
 
-@Component
-public class PetMapper {
+@Mapper
+public interface PetMapper {
 
-    public PetDTO petToPetDTOMapper(Pet source) {
-        if (source == null) {
-            return null;
-        }
-        return PetDTO.builder()
-                .objectId(source.getObjectId())
-                .id(convertObjectIdToHexString(source.getObjectId()))
-                .name(source.getName())
-                .species(source.getSpecies())
-                .breed(source.getBreed())
-                .build();
-    }
+    PetMapper INSTANCE = Mappers.getMapper(PetMapper.class);
 
-    public Pet petDTOToPetMapper(PetDTO source) {
-        if (source == null) {
-            return null;
-        }
-        return Pet.builder()
-                .objectId(source.getObjectId())
-                .name(source.getName())
-                .species(source.getSpecies())
-                .breed(source.getBreed())
-                .build();
-    }
+    @Mapping(target = "id", expression = "java(source.getObjectId().toHexString())")
+    PetDTO petToPetDTOMapper(Pet source);
 
-    private static String convertObjectIdToHexString(ObjectId objectId) {
-        return objectId.toHexString();
-    }
+    Pet petDTOToPetMapper(PetDTO source);
 }

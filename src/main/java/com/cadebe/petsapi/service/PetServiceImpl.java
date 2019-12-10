@@ -16,25 +16,23 @@ import java.util.stream.Collectors;
 public class PetServiceImpl implements PetService {
 
     private final PetRepository petRepository;
-    private final PetMapper petMapper;
 
-    public PetServiceImpl(PetRepository petRepository, PetMapper petMapper) {
+    public PetServiceImpl(PetRepository petRepository) {
         this.petRepository = petRepository;
-        this.petMapper = petMapper;
     }
 
     @Override
     public List<PetDTO> getAllPets() {
         List<Pet> petList = new ArrayList<>(petRepository.findAll());
 
-        return petList.stream().map(petMapper::petToPetDTOMapper).collect(Collectors.toList());
+        return petList.stream().map(PetMapper.INSTANCE::petToPetDTOMapper).collect(Collectors.toList());
     }
 
     @Override
     public List<PetDTO> getAllPetsByName(String name) {
         return petRepository.findByNameContainingIgnoreCase(name)
                 .stream()
-                .map(petMapper::petToPetDTOMapper)
+                .map(PetMapper.INSTANCE::petToPetDTOMapper)
                 .collect(Collectors.toList());
     }
 
@@ -42,7 +40,7 @@ public class PetServiceImpl implements PetService {
     public List<PetDTO> getAllPetsBySpecies(String species) {
         return petRepository.findBySpeciesContainingIgnoreCase(species)
                 .stream()
-                .map(petMapper::petToPetDTOMapper)
+                .map(PetMapper.INSTANCE::petToPetDTOMapper)
                 .collect(Collectors.toList());
     }
 
@@ -50,13 +48,13 @@ public class PetServiceImpl implements PetService {
     public List<PetDTO> getAllPetsByBreed(String breed) {
         return petRepository.findByBreedContainingIgnoreCase(breed)
                 .stream()
-                .map(petMapper::petToPetDTOMapper)
+                .map(PetMapper.INSTANCE::petToPetDTOMapper)
                 .collect(Collectors.toList());
     }
 
     @Override
     public PetDTO getPetById(String id) {
-        return petMapper.petToPetDTOMapper(petRepository.findById(id).orElseThrow(ResourceNotFoundException::new));
+        return PetMapper.INSTANCE.petToPetDTOMapper(petRepository.findById(id).orElseThrow(ResourceNotFoundException::new));
     }
 
     @Override
@@ -87,6 +85,6 @@ public class PetServiceImpl implements PetService {
     }
 
     private PetDTO persistPet(PetDTO pet) {
-        return petMapper.petToPetDTOMapper(petRepository.save(petMapper.petDTOToPetMapper(pet)));
+        return PetMapper.INSTANCE.petToPetDTOMapper(petRepository.save(PetMapper.INSTANCE.petDTOToPetMapper(pet)));
     }
 }
